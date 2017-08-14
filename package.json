@@ -47,6 +47,7 @@
   "scripts": {
     "start": "egg-bin dev",
     "dev": "NODE_ENV=development webpack-dev-server --config ./build/webpack.config.dev.js",
+    "build": "echo \"build\"",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
