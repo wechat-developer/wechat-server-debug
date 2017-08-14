@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = app => {
-  app.get('/', 'view.index');
+  app.get('/oauth', 'view.oauth');
 };
