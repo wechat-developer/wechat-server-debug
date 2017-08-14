@@ -5,9 +5,21 @@ module.exports = app => {
       const { ctx, config } = this;
       const { code, r } = ctx.queries;
 
-      ctx.service.oauth.getAccessToken(code);
+      if (!r) {
+        throw new Error('INVALID R');
+      }
 
-      return ctx.redirect(r + '&code=' + code);
+      yield ctx.service.oauth.getAccessToken(code);
+
+      // FIXME:
+      if (r.indexOf('?') > -1) {
+        return ctx.redirect(r + '&code=' + code);
+      } else {
+        return ctx.redirect(r + '?code=' + code);
+      }
+
+      // ctx.body = `r: ${r}, code: ${code}, openId: ${openId}, accessToken: ${accessToken}`;
+      // ctx.status = 200;
     }
   }
 

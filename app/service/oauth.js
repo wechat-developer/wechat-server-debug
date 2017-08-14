@@ -1,18 +1,4 @@
-const OAuth = require('wechat-oauth');
-
-
-function getAccessToken(code, appid, appsecret) {
-  return new Promise((resolve, reject) => {
-    const client = new OAuth(appid, appsecret);
-    client.getAccessToken(code, function (err, { data }) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(data);
-      }
-    });
-  });
-}
+const OAuthClient = require('promise-wechat-oauth');
 
 
 module.exports = app => {
@@ -20,17 +6,23 @@ module.exports = app => {
 
   return class OAuth extends app.Service {
     get(key) {
-      return memoryCache[key];
-    }
-
-    set(key, value) {
-      memoryCache[key] = value;
+      const { ctx } = this;
+      const data = Object.assign({}, memoryCache[key]);
+      delete memoryCache[key];
+      return data;
     }
 
     * getAccessToken(code) {
       const { ctx, config } = this;
-      const { accessToken, openId } = yield getAccessToken(config.props['wechat.appid'], config.props['wechat.appsecret']);
-      memoryCache[code] = { accessToken, openId };
+      const appid = config.props['wechat.appid'];
+      const appsecret = config.props['wechat.appsecret'];
+      try {
+        const client = new OAuthClient(appid, appsecret);
+        const { access_token: accessToken, openid: openId } = yield client.getAccessToken(code);
+        memoryCache[code] = { accessToken, openId };
+      } catch (err) {
+        ctx.logger.error(err);
+      }
     }
   };
 }

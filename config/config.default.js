@@ -9,6 +9,10 @@ module.exports = appInfo => {
 
   config.keys = 'default-dev-key';
 
+  config.security = {
+    csrf: false,
+  };
+
   config.view = {
     defaultViewEngine: 'nunjucks',
     mapping: {
