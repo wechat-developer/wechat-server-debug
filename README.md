@@ -1,4 +1,12 @@
-wechat-server-debug
+wechat-pivot
 ==
 
-To deploy a full featureed mockup wechat server with users.
+pivot
+--
+
+common wechat integration
+
+mockup
+--
+
+and the corresponding mockup
