@@ -34,5 +34,19 @@ module.exports = appInfo => {
   config.props = props;
 
 
+  config.sequelize = {
+    dialect: 'postgres',
+    database: props['postgres.database'],
+    host: props['postgres.address'],
+    port: '5432',
+    username: props['postgres.username'],
+    password: props['postgres.password'],
+    define: {
+      freezeTableName: true,
+      underscored: true,
+    },
+  };
+
+
   return config;
 };

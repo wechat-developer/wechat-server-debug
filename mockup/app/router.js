@@ -2,4 +2,6 @@
 
 module.exports = app => {
   app.get('/', 'view.index');
+
+  app.get('/api/users', 'api.users');
 };
