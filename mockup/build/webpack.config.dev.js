@@ -19,12 +19,12 @@ module.exports = merge(WEBPACK, {
 
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-      },
+      // {
+      //   test: /\.(js|vue)$/,
+      //   exclude: /node_modules/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      // },
       {
         test: /\.(css|scss)/,
         exclude: /node_modules/,
