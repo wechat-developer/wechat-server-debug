@@ -15,11 +15,7 @@ module.exports = app => {
       const callback = `${selfUrl}/oauth?r=${encodeURIComponent(r)}`;
       const url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${encodeURIComponent(callback)}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect`
 
-      ctx.body = {
-        code: 0,
-        message: 'ok',
-        data: { url },
-      };
+      ctx.body = { url };
       ctx.status = 201;
     }
 
@@ -29,11 +25,7 @@ module.exports = app => {
 
       const { openId } = ctx.service.oauth.get(code);
 
-      ctx.body = {
-        code: 0,
-        message: 'ok',
-        data: { openId },
-      };
+      ctx.body = { openId };
       ctx.status = 201;
     }
   }
