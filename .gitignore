@@ -60,4 +60,8 @@ typings/
 
 .DS_Store
 
+pivot/app/public/dist/
+mockup/app/public/dist/
+package-lock.json
+webpack-assets.json
 envfile

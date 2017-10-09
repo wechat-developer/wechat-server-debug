@@ -1,5 +1,5 @@
 const path = require('path');
-const { name, ENTRY, DEV_HOST = '0.0.0.0', DEV_PORT = '3001', SOURCE_DIR = 'app/public/src', TARGET_DIR = 'app/public/dist' } = require('../package.json');
+const { name, ENTRY, DEV_HOST = '0.0.0.0', DEV_PORT = '3001', SOURCE_DIR = 'rsrc', TARGET_DIR = 'app/public/dist' } = require('../package.json');
 const PROJECT_PATH = process.cwd();
 
 

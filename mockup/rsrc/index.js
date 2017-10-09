@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import { Button, Notification } from 'element-ui';
+import ElementUI from 'element-ui'
 import App from './App.vue';
 import './style.scss';
 
 
-Vue.use(Button);
+Vue.use(ElementUI);
 
 
 Vue.prototype.$notify = Notification

@@ -6,10 +6,19 @@
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
 
   <link rel="stylesheet" href="/public/css/vendor/element-ui-1.4.3.css" />
+
+  {% if env === 'dev' %}
+  {% else %}
+  <script src="/public/dist/index-stamp4hash.css"></script>
+  {% endif %}
 </head>
 <body>
   <div class="App"></div>
 
+  {% if env === 'dev' %}
   <script src="http://127.0.0.1:3001/static/js/index-stamp4hash.js"></script>
+  {% else %}
+  <script src="/public/dist/index-stamp4hash.js"></script>
+  {% endif %}
 </body>
 </html>

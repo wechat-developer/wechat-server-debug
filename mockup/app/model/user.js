@@ -6,7 +6,8 @@ module.exports = app => {
       type: INTEGER,
       primaryKey: true,
     },
-    username: STRING(128),
+    username: STRING(127),
+    password: STRING(255),
   });
 
   // User.findByLogin = function* (login) {
