@@ -7,5 +7,6 @@ module.exports = app => {
 
   app.get('/', 'view.index');
 
+  app.post('/api/login', 'api.login');
   app.get('/api/users', 'api.users');
 };

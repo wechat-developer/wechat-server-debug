@@ -10,13 +10,5 @@ module.exports = app => {
     password: STRING(255),
   });
 
-  // User.findByLogin = function* (login) {
-  //   return yield this.findOne({ login: login });
-  // }
-
-  // User.prototype.logSignin = function* () {
-  //   yield this.update({ last_sign_in_at: new Date() });
-  // }
-
   return User;
 };

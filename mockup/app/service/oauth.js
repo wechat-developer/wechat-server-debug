@@ -1,3 +1,6 @@
+const rnd = require('vanilla.js/random/dummy');
+
+
 module.exports = app => {
   let memoryCache = {};
 
@@ -9,17 +12,9 @@ module.exports = app => {
       return data;
     }
 
-    * getAccessToken(code) {
-      const { ctx, config } = this;
-      const appid = config.props['wechat.appid'];
-      const appsecret = config.props['wechat.appsecret'];
-      try {
-        const accessToken = 'access-token';
-        const openId = 'open-id';
-        memoryCache[code] = { accessToken, openId };
-      } catch (err) {
-        ctx.logger.error(err);
-      }
+    * getAccessToken(code, openId) {
+      const accessToken = rnd();
+      memoryCache[code] = { accessToken, openId };
     }
   };
 }

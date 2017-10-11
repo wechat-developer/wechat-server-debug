@@ -5,6 +5,7 @@ module.exports = app => {
   class PivotController extends app.Controller {
     * oauth() {
       const { ctx, config } = this;
+      const env = config.props['egg.env'];
       const { code, r } = ctx.queries;
 
       if (!r) {
@@ -13,15 +14,14 @@ module.exports = app => {
 
       yield ctx.service.oauth.getAccessToken(code);
 
-      // FIXME:
+      let redirect = r;
       if (r.indexOf('?') > -1) {
-        return ctx.redirect(r + '&code=' + code);
+        redirect += '&code=' + code;
       } else {
-        return ctx.redirect(r + '?code=' + code);
+        redirect += '?code=' + code;
       }
 
-      // ctx.body = `r: ${r}, code: ${code}`;
-      // ctx.status = 200;
+      yield ctx.render('oauth.html', { redirect, code, env });
     }
 
     * oauthUrl() {
