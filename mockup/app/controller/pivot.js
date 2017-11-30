@@ -50,6 +50,27 @@ module.exports = app => {
       ctx.body = { openId };
       ctx.status = 201;
     }
+
+    * jssdkConfig() {
+      const { ctx, config } = this;
+      const { url } = ctx.queries;
+
+      if (!url || url.length === 0) {
+        throw new Error('INVALID URL');
+      }
+
+      const signature = url[0].toUpperCase().replace(/[://.-]/ig, rnd());
+
+      const appId = config.props['wechat.appid']
+
+      ctx.body = {
+        appId,
+        timestamp: parseInt(new Date().getTime() / 1000, 0) + '',
+        nonceStr: rnd(),
+        signature,
+      };
+      ctx.status = 201;
+    }
   }
 
   return PivotController;

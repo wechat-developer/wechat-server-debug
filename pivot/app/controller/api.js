@@ -28,6 +28,16 @@ module.exports = app => {
       ctx.body = { openId };
       ctx.status = 201;
     }
+
+    * jssdk() {
+      // const { ctx, config } = this;
+      // const { code } = ctx.queries;
+
+      // const { openId } = ctx.service.oauth.get(code);
+
+      // ctx.body = { openId };
+      // ctx.status = 201;
+    }
   }
 
   return ApiController;
